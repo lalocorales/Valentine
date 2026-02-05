@@ -1,20 +1,19 @@
-﻿
-<div class="page">
+﻿<div class="page">
     <div class="card">
-        <h1>Eduardo wants you to be his Valentine 💘</h1>
-        <p class="subtitle">Pame, this question was handcrafted by Lalonchera.</p>
-        <p class="subtitle">Choose wisely… the universe is watching.</p>
+        <h1>Cari quiere que seas su San Valentín 💘</h1>
+        <p class="subtitle">Chiqui, esta pregunta fue hecha con amor y un poquito de maldad.</p>
+        <p class="subtitle">Elige con cuidado… el universo está mirando. 👀</p>
 
         <div class="arena" id="arena">
-            <button class="btn yes" id="btnYes" type="button">Yes ✅</button>
+            <button class="btn yes" id="btnYes" type="button">Sí ✅</button>
             <button class="btn no" id="btnNo" type="button">No 🙃</button>
         </div>
 
-        <p class="ps">P.S. “No” seems very shy.</p>
+        <p class="ps">P.D. “No” es muy tímido.</p>
 
         <div class="result" id="result" aria-live="polite"></div>
 
-        <!-- Audio (must be under wwwroot/music/yoshi-story.mp3) -->
+        <!-- Audio (ajusta la ruta si tu archivo está en otra carpeta) -->
         <audio id="valSong" preload="auto">
             <source src="/Valentine/Valentine/docs/yoshi-story.mp3" type="audio/mpeg" />
         </audio>
@@ -155,7 +154,6 @@
         const result = document.getElementById("result");
         const song = document.getElementById("valSong");
 
-        // Place the "No" button somewhere inside the arena
         function moveNoButton() {
             const arenaRect = arena.getBoundingClientRect();
             const btnRect = btnNo.getBoundingClientRect();
@@ -171,15 +169,15 @@
             btnNo.style.top = y + "px";
         }
 
-        // Initial position
+        // Posición inicial
         moveNoButton();
 
-        // The "No" button is shy: it runs away
+        // El "No" es tímido: huye
         btnNo.addEventListener("mouseenter", moveNoButton);
         btnNo.addEventListener("mousedown", moveNoButton);
         btnNo.addEventListener("focus", moveNoButton);
 
-        // Also if user moves mouse inside arena and gets close, it flees
+        // Si te acercas, corre
         arena.addEventListener("mousemove", (e) => {
             const noRect = btnNo.getBoundingClientRect();
             const dx = e.clientX - (noRect.left + noRect.width / 2);
@@ -194,25 +192,25 @@
                 <span class="badge">💖</span>
                 <div>
                     <div style="font-weight:800; font-size:16px;">
-                        Best answer ever.
+                        La mejor respuesta del multiverso.
                     </div>
                     <div style="color: rgba(255,255,255,.75); margin-top:2px;">
-                        Pame just said yes 💕
-                        Eduardo (Lalonchera) is officially the happiest guy alive.
+                        Chiqui dijo que sí 💕<br/>
+                        Cari está oficialmente en modo: <b>felicidad máxima</b>.
                     </div>
                 </div>
             `;
 
-            // Play song on Yes click (browser allows because it's a user click)
+            // Reproducir canción al dar click (permitido por el navegador)
             try {
                 song.currentTime = 0;
                 song.volume = 0.8;
                 song.play();
             } catch (e) {
-                console.log("Audio blocked or failed:", e);
+                console.log("Audio bloqueado o falló:", e);
             }
 
-            // Optional: make "No" stop running after success
+            // Opcional: después del "Sí", el "No" deja de huir
             btnNo.removeEventListener("mouseenter", moveNoButton);
             btnNo.removeEventListener("mousedown", moveNoButton);
             btnNo.removeEventListener("focus", moveNoButton);
